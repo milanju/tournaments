@@ -4,5 +4,8 @@ Template.loginForm.events({
     var password = event.target['login-password'].value;
     Meteor.loginWithPassword(username, password);
     return false;
+  },
+  'click #logout-button': function() {
+    Meteor.logout();
   }
 });
