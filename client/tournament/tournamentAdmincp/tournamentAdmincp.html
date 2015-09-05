@@ -1,0 +1,21 @@
+<template name="tournamentAdmincp">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Admin Panel</div>
+    <div class="panel-body">
+      <div class="col-xs-12 col-sm-6 text-center">
+        <form id="add-participants-form" class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control" id="add-participants-amount" placeholder="amount">
+          </div>
+          <button type="submit" class="btn btn-primary">Add Participants</button>
+        </form>
+        {{#if checkInStarted}}
+          <button id="start-tournament-btn" class="admincp-btn btn btn-primary">Start Tournament</button>
+        {{else}}
+          <button id="start-checkin-btn" class="admincp-btn btn btn-primary">Start Check In</button>
+        {{/if}}
+        <button id="reset-tournament-btn" class="admincp-btn btn btn-danger">Reset Tournament</button>
+      </div>
+    </div>
+  </div>
+</template>

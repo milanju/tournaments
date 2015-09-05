@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="wrapper">
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -27,16 +27,13 @@
           </div>
         </div>
       </nav>
-      {{> yield}}
-
-      <div class="container">
-
-        <hr>
-
-        <footer>
-          <p>&copy; Milant</p>
-        </footer>
-      </div>
+    </div>
+    {{> yield}}
+    <div class="wrapper">
+      <hr>
+      <footer>
+        <p>&copy; Milant</p>
+      </footer>
     </div>
   </body>
 </template>

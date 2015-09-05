@@ -1,0 +1,68 @@
+<template name="userProfileEdit">
+  {{#if isCurrentUser}}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-title">Edit {{currentUser.username}}'s Profile</div>
+            </div>
+            <div class="panel-body">
+              <form id="profile-edit-form" class="form-horizontal">
+                <div class="form-group">
+                  <label for="profile-edit-accounts-eu" class="col-sm-2 control-label">EU</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="profile-edit-accounts-eu" placeholder="Username" value="{{currentUser.accounts.eu.tag}}">
+                  </div>
+                  <div class="col-sm-5">
+                    <select id="profile-edit-accounts-eu-race" class="form-control">
+                      <option {{selectedRace 'eu' 'random'}}>Random</option>
+                      <option {{selectedRace 'eu' 'protoss'}}>Protoss</option>
+                      <option {{selectedRace 'eu' 'terran'}}>Terran</option>
+                      <option {{selectedRace 'eu' 'zerg'}}>Zerg</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="profile-edit-accounts-na" class="col-sm-2 control-label">NA</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="profile-edit-accounts-na" placeholder="Username" value="{{currentUser.accounts.na.tag}}">
+                  </div>
+                  <div class="col-sm-5">
+                    <select id="profile-edit-accounts-na-race" class="form-control">
+                      <option {{selectedRace 'na' 'random'}}>Random</option>
+                      <option {{selectedRace 'na' 'protoss'}}>Protoss</option>
+                      <option {{selectedRace 'na' 'terran'}}>Terran</option>
+                      <option {{selectedRace 'na' 'zerg'}}>Zerg</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="profile-edit-accounts-kr" class="col-sm-2 control-label">KR</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" id="profile-edit-accounts-kr" placeholder="Username" value="{{currentUser.accounts.kr.tag}}">
+                  </div>
+                  <div class="col-sm-5">
+                    <select id="profile-edit-accounts-kr-race" class="form-control">
+                      <option {{selectedRace 'kr' 'random'}}>Random</option>
+                      <option {{selectedRace 'kr' 'protoss'}}>Protoss</option>
+                      <option {{selectedRace 'kr' 'terran'}}>Terran</option>
+                      <option {{selectedRace 'kr' 'zerg'}}>Zerg</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    This is not your profile
+  {{/if}}
+</template>

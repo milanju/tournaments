@@ -1,0 +1,32 @@
+<template name="tournamentUsercp">
+  {{#if currentUser}}
+    {{#if isParticipant}}
+      <div class="well">
+        <p>Hello participant.</p>
+        <div class="usercp-toolbar">
+          <button id="tournament-usercp-signout" class="btn btn-primary">Sign me out :(!</button>
+        </div>
+      </div>
+    {{else}}
+      {{#if signupsOpen}}
+        {{#if account}}
+          <div class="well text-center">
+            <p>You may sign up for this tournament as {{account}}.</p>
+            <div class="usercp-toolbar">
+              <button id="tournament-usercp-signup" class="btn btn-primary">Sign me up!</button>
+            </div>
+          </div>
+        {{else}}
+        {{/if}}
+      {{else}}
+        <div class="well">
+          Signups for this Tournament are closed.
+        </div>
+      {{/if}}
+    {{/if}}
+  {{else}}
+    <div class="well">
+      Login to participate in this tournament.
+    </div>
+  {{/if}}
+</template>

@@ -1,0 +1,44 @@
+<template name="tournament">
+  <div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+        {{#with tournament}}
+          <div class="panel panel-primary">
+            <div class="panel-heading">{{this.title}}</div>
+            <div class="panel-body">
+              {{#if isInRole 'admin'}}
+                {{> tournamentAdmincp}}
+              {{/if}}
+              <div class="row">
+                <div class="col-xs-12 text-center">
+                  status: {{this.status}}
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                  {{> tournamentUsercp}}
+                </div>
+                <div class="col-lg-8 col-md-6 col-xs-12">
+                  {{this.description}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Participants</div>
+                    <div class="panel-body">
+                      {{#each this.participants}}
+                        {{this.account}}
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{#each this.participants}}
+            <div>{{this.accounts}}</div>
+          {{/each}}
+        {{/with}}
+      </div>
+    </div>
+  </div>
+</template>

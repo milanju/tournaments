@@ -1,0 +1,63 @@
+<template name="tournamentNew">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <div class="panel-title">New Tournament</div>
+          </div>
+          <div class="panel-body">
+            <form id="new-tournament-form" class="form-horizontal">
+              <div class="form-group">
+                <label for="new-tournament-region" class="col-sm-2 control-label">Region</label>
+                <div class="col-sm-10">
+                  <select id="new-tournament-region" class="form-control">
+                    <option>EU</option>
+                    <option>NA</option>
+                    <option>KR</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="new-tournament-title" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="new-tournament-title" placeholder="Title">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="new-tournament-category" class="col-sm-2 control-label">Category</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="new-tournament-category" placeholder="Category">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="new-tournament-description" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="new-tournament-description" placeholder="Description">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="new-tournament-leagues" class="col-sm-2 control-label">Leagues</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="new-tournament-leagues" placeholder="Leagues">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="new-tournament-date" class="col-sm-2 control-label">Date</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="new-tournament-date" placeholder="Date">
+                </div>
+              </div>
+              <p class="new-tournament-form-error bg-danger col-sm-offset-2 col-sm-10"></p>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
