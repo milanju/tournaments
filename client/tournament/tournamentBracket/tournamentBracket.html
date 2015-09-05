@@ -1,0 +1,24 @@
+<template name="tournamentBracket">
+    <table class="bracket">
+      <tr>
+        {{#each bracket}}
+          <th>
+            {{this.ro}}
+          </th>
+        {{/each}}
+      </tr>
+      <tr>
+        {{#each bracket}}
+          <td>
+            {{#each this.participants}}
+              {{#if isEven}}
+                <div class="match-player match-player-1">{{this.account}}</div>
+              {{else}}
+                <div class="match-player match-player-2">{{this.account}}</div>
+              {{/if}}
+            {{/each}}
+          </td>
+        {{/each}}
+      </tr>
+    </table>
+</template>
