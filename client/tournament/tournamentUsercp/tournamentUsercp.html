@@ -2,10 +2,28 @@
   {{#if currentUser}}
     {{#if isParticipant}}
       <div class="well">
-        <p>Hello participant.</p>
-        <div class="usercp-toolbar">
-          <button id="tournament-usercp-signout" class="btn btn-primary">Sign me out :(!</button>
-        </div>
+        {{#if signupsOpen}}
+          <div class="usercp-toolbar">
+            {{#if checkin}}
+              <p>You are signed up as {{account}}. You need to check in now!</p>
+              <button id="tournament-usercp-checkin" class="btn btn-primary">Check In</button>
+            {{else}}
+              {{#if statusCheckin}}
+                <p>You are checked in as {{account}}. Waiting for tournament to start.</p>
+              {{else}}
+                <p>You are signed up as {{account}}.</p>
+              {{/if}}
+            {{/if}}
+            <button id="tournament-usercp-signout" class="btn btn-primary">Sign me out :(!</button>
+          </div>
+        {{/if}}
+        {{#if running}}
+          {{#if isParticipating}}
+            you participating!! :)!
+          {{else}}
+            <p>You signed up but didn't check in. If there are still open slots try contacting an admin.</p>
+          {{/if}}
+        {{/if}}
       </div>
     {{else}}
       {{#if signupsOpen}}

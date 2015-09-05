@@ -7,9 +7,37 @@ Template.tournamentUsercp.helpers({
     }
     return false;
   },
+  isParticipating: function() {
+    var user = Meteor.user();
+    var bracket = this.bracket;
+    for(var i = 0; i < bracket.length; i++) {
+      for(var j = 0; j < bracket[i].participants.length; j++) {
+        if(bracket[i].participants[j].userId === user._id) return true;
+      }
+    }
+    return false;
+  },
   signupsOpen: function() {
     var status = this.status;
     if(status === "open" || status === "checkin") return true;
+    return false;
+  },
+  statusCheckin: function() {
+    if(this.status === "checkin") return true;
+    return false;
+  },
+  checkin: function() {
+    var user = Meteor.user();
+    for(var i = 0; i < this.participants.length; i++) {
+      if(this.participants[i].userId === user._id) {
+        if(this.participants[i].checkedIn) return false;
+      }
+    }
+    if(this.status === "checkin") return true;
+    return false;
+  },
+  running: function() {
+    if(this.status === "running") return true;
     return false;
   },
   account: function() {
