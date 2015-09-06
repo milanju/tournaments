@@ -12,5 +12,9 @@ Template.tournamentBracket.helpers({
   isEven: function() {
     if(Template.parentData().participants.indexOf(this) % 2 === 0) return true;
     return false;
+  },
+  isParticipant: function() {
+    if(this.userId === "empty") return false;
+    return true;
   }
 });

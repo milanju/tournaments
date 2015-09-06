@@ -12,9 +12,17 @@
           <td>
             {{#each this.participants}}
               {{#if isEven}}
-                <div class="match-player match-player-1">{{this.account}}</div>
+                {{#if isParticipant}}
+                  <div class="match-player match-player-1">{{this.account}}</div>
+                {{else}}
+                  <div class="match-player match-player-1">-</div>
+                {{/if}}
               {{else}}
-                <div class="match-player match-player-2">{{this.account}}</div>
+                {{#if isParticipant}}
+                  <div class="match-player match-player-2">{{this.account}}</div>
+                {{else}}
+                  <div class="match-player match-player-2">-</div>
+                {{/if}}
               {{/if}}
             {{/each}}
           </td>
