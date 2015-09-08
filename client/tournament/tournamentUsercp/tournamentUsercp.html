@@ -19,7 +19,15 @@
         {{/if}}
         {{#if running}}
           {{#if isParticipating}}
-            you participating!! :)!
+            {{#if hasOpenMatch}}
+              {{> tournamentUsercpReport}}
+            {{else}}
+              {{#if droppedOut}}
+                You dropped out of the tournament.
+              {{else}}
+                Waiting for opponent.
+              {{/if}}
+            {{/if}}
           {{else}}
             <p>You signed up but didn't check in. If there are still open slots try contacting an admin.</p>
           {{/if}}

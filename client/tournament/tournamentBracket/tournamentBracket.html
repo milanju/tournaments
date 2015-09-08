@@ -13,15 +13,35 @@
             {{#each this.participants}}
               {{#if isEven}}
                 {{#if isParticipant}}
-                  <div class="match-player match-player-1">{{this.account}}</div>
+                  <div class="match-player match-player-1 {{raceBackground}}" style="margin-top: {{margin}}">
+                    {{this.account}}
+                    <div class="match-player-score">
+                      {{this.score}}
+                    </div>
+                  </div>
                 {{else}}
-                  <div class="match-player match-player-1">-</div>
+                  <div class="match-player match-player-1" style="margin-top: {{margin}}">
+                    -
+                    <div class="match-player-score">
+                      -
+                    </div>
+                  </div>
                 {{/if}}
               {{else}}
                 {{#if isParticipant}}
-                  <div class="match-player match-player-2">{{this.account}}</div>
+                  <div class="match-player match-player-2 {{raceBackground}}" style="margin-bottom: {{margin}}">
+                    {{this.account}}
+                    <div class="match-player-score">
+                      {{this.score}}
+                    </div>
+                  </div>
                 {{else}}
-                  <div class="match-player match-player-2">-</div>
+                  <div class="match-player match-player-2" style="margin-bottom: {{margin}}">
+                    -
+                    <div class="match-player-score">
+                      -
+                    </div>
+                  </div>
                 {{/if}}
               {{/if}}
             {{/each}}

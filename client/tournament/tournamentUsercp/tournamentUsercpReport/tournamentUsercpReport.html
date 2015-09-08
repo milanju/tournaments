@@ -1,0 +1,16 @@
+<template name="tournamentUsercpReport">
+  {{#with match}}
+    <h4>{{this.player.account}} vs. {{this.opponent.account}}</h4>
+    <h5>Best of {{this.mode}}</h5>
+    <div id="submit-score-radios">
+      {{#each loopCount this.mode}}
+        <div>
+          <button id="submit-score-win-{{this}}" class="btn {{selected 'win'}}" data="win">Win</button>
+          <button id="submit-score-lose-{{this}}" class="btn {{selected 'lose'}}" data="lose">Lose</button>
+          <button id="submit-score-empty-{{this}}" class="btn {{selected 'empty'}}" data="empty">-</button>
+        </div>
+      {{/each}}
+    </div>
+    <button id="submit-score" class="btn btn-primary">Submit Score</button>
+  {{/with}}
+</template>
