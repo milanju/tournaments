@@ -1,3 +1,7 @@
+Template.tournamentBracket.onCreated(function() {
+  this.editing = new ReactiveVar({});
+});
+
 Template.tournamentBracket.helpers({
   bracket: function() {
     function compare(a, b) {
@@ -68,7 +72,7 @@ Template.tournamentBracket.helpers({
     if(bracket.indexOf(currentBracket) === 0) {
       return 'display: none;';
     }
-    
+
     if(currentBracket.ro === 1) {
       return 'border-left: 0;';
     }
@@ -90,5 +94,63 @@ Template.tournamentBracket.helpers({
   },
   isFourth: function() {
     return Template.parentData().participants.indexOf(this) % 4 === 0
+  },
+  beingEdited: function() {
+    var editing = Template.instance().editing.get();
+    if(editing[this._id]) return true;
+    return false;
+  }
+});
+
+Template.tournamentBracket.events({
+  'click .edit-match': function(event, template) {
+    var editing = template.editing.get();
+    var tournament = Template.currentData();
+    var bracket = tournament.bracket;
+    var playerA = this._id;
+    var playerB;
+    var mode;
+    for(var i = 0; i < bracket.length; i++) {
+      for(var j = 0; j < bracket[i].participants.length; j++) {
+        if(bracket[i].participants[j]._id === playerA) {
+          playerB = bracket[i].participants[j+1]._id;
+          mode = bracket[i].mode;
+          break;
+        }
+      }
+    }
+    if(editing[playerA] && editing[playerB]) {
+      var scorePlayerA = parseInt($('#edit-score-' + playerA)[0].value);
+      var scorePlayerB = parseInt($('#edit-score-' + playerB)[0].value);
+      var leftovers = mode - scorePlayerA - scorePlayerB;
+      var scores = [];
+      for(var i = 0; i < scorePlayerA; i++) {
+        scores.push('win');
+      }
+
+      for(var i = 0; i < scorePlayerB; i++) {
+        scores.push('lose');
+      }
+
+      for(var i = 0; i < leftovers; i++) {
+        scores.push('empty');
+      }
+
+      console.log(scores);
+      if(scorePlayerA === ((mode+1)/2) || scorePlayerB === ((mode+1)/2)) {
+        Meteor.call('tournamentsSubmitScore', tournament._id, scores, this.userId);
+      } else {
+        // handle invalid scores
+        console.log('invalid scores');
+      }
+
+      delete editing[playerA];
+      delete editing[playerB];
+    } else {
+      editing[playerA] = true;
+      editing[playerB] = true;
+    }
+
+    template.editing.set(editing);
   }
 });
