@@ -2,6 +2,8 @@ getMatch = function(bracket) {
   function isEven (n) {
     return (n % 2) === 0;
   }
+  console.log("BRACKET: ");
+  console.log(bracket);
   var user = Meteor.user();
   var foundPlayer = false;
   for(var i = 0; i < bracket.length; i++) {
@@ -20,6 +22,7 @@ getMatch = function(bracket) {
       if(foundPlayer) break;
     }
   }
+  console.log({player: player, opponent: opponent, mode: mode});
   return {player: player, opponent: opponent, mode: mode};
 }
 

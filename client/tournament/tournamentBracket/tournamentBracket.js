@@ -136,12 +136,10 @@ Template.tournamentBracket.events({
         scores.push('empty');
       }
 
-      console.log(scores);
       if(scorePlayerA === ((mode+1)/2) || scorePlayerB === ((mode+1)/2)) {
         Meteor.call('tournamentsSubmitScore', tournament._id, scores, this.userId);
       } else {
         // handle invalid scores
-        console.log('invalid scores');
       }
 
       delete editing[playerA];

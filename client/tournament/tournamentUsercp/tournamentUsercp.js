@@ -33,7 +33,10 @@ Template.tournamentUsercp.helpers({
             var opponent = bracket[i].participants[j-1];
           }
           if(opponent.userId !== "empty" && opponent.userId !== "BYE") {
-            if(player.score === 0 && opponent.score === 0) return true;
+            if(player.score === 0 && opponent.score === 0) {
+              console.log('has open match');
+              return true;
+            }
           }
         }
       }
@@ -72,7 +75,8 @@ Template.tournamentUsercp.helpers({
     return getMatch(this.bracket);
   },
   droppedOut: function() {
-    var match = getMatch(this.bracket);
+    var bracket = Tournaments.findOne().bracket;
+    var match = getMatch(bracket);
     if(match.opponent.userId === "empty" || match.opponent.userId === "BYE") {
       return false;
     } else {
