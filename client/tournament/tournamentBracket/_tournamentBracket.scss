@@ -2,6 +2,11 @@
   margin: 0 auto;
 }
 
+.bracket tr th {
+  text-align: center;
+  padding-right: 20px;
+}
+
 .match-player {
   position: relative;
   height: 24px;
@@ -11,6 +16,7 @@
   font-size: 11px;
   line-height: 22px;
   padding-left: 6px;
+  margin-right: 20px;
 }
 
 .match-player-1 {
@@ -48,4 +54,46 @@
 
 .match-player-random {
   background-color: rgb(242,232,184);
+}
+
+.bracket-line-top-left {
+  position: absolute;
+  width: 11px;
+  top: 22px;
+  right: -12px;
+  border-top: solid 2px #aaa;
+  border-right: solid 2px #aaa;
+  border-top-right-radius: 3px;
+}
+
+.bracket-line-bottom-left {
+  position: absolute;
+  width: 11px;
+  bottom: -2px;
+  right: -12px;
+  border-bottom: solid 2px #aaa;
+  border-right: solid 2px #aaa;
+  border-bottom-right-radius: 3px;
+}
+
+.bracket-line-top-right {
+  position: absolute;
+  width: 11px;
+  height: 14px;
+  top: -2px;
+  left: -12px;
+  border-bottom: solid 2px #aaa;
+  border-left: solid 2px #aaa;
+  border-bottom-left-radius: 3px;
+}
+
+.bracket-line-bottom-right {
+  position: absolute;
+  width: 11px;
+  height: 14px;
+  bottom: -26px;
+  left: -12px;
+  border-top: solid 2px #aaa;
+  border-left: solid 2px #aaa;
+  border-top-right-radius: 3px;
 }

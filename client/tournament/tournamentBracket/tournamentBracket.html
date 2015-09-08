@@ -18,6 +18,13 @@
                     <div class="match-player-score">
                       {{this.score}}
                     </div>
+                    <div class="bracket-line-top-right" style="{{rightTopLineAdjust}}"></div>
+                    <div class="bracket-line-bottom-right" style="{{rightBottomLineAdjust}}"></div>
+                    {{#if isFourth}}
+                      <div class="bracket-line-top-left" style="height: {{lineHeight}}"></div>
+                    {{else}}
+                      <div class="bracket-line-bottom-left" style="height: {{lineHeight}}"></div>
+                    {{/if}}
                   </div>
                 {{else}}
                   <div class="match-player match-player-1" style="margin-top: {{margin}}">
@@ -25,6 +32,13 @@
                     <div class="match-player-score">
                       -
                     </div>
+                    <div class="bracket-line-top-right" style="{{rightTopLineAdjust}}"></div>
+                    <div class="bracket-line-bottom-right" style="{{rightBottomLineAdjust}}"></div>
+                    {{#if isFourth}}
+                      <div class="bracket-line-top-left" style="height: {{lineHeight}}"></div>
+                    {{else}}
+                      <div class="bracket-line-bottom-left" style="height: {{lineHeight}}"></div>
+                    {{/if}}
                   </div>
                 {{/if}}
               {{else}}
