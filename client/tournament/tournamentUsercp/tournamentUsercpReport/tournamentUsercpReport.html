@@ -5,9 +5,9 @@
     <div id="submit-score-radios">
       {{#each loopCount this.mode}}
         <div>
-          <button id="submit-score-win-{{this}}" class="btn {{selected 'win'}}" data="win">Win</button>
-          <button id="submit-score-lose-{{this}}" class="btn {{selected 'lose'}}" data="lose">Lose</button>
-          <button id="submit-score-empty-{{this}}" class="btn {{selected 'empty'}}" data="empty">-</button>
+          <button id="submit-score-win-{{this}}" class="btn {{selected 'win'}} btn-sm" data="win">Win</button>
+          <button id="submit-score-lose-{{this}}" class="btn {{selected 'lose'}} btn-sm" data="lose">Lose</button>
+          <button id="submit-score-empty-{{this}}" class="btn {{selected 'empty'}} btn-sm" data="empty">-</button>
         </div>
       {{/each}}
     </div>

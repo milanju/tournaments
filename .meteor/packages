@@ -11,6 +11,7 @@ accounts-ui
 alanning:roles
 aldeed:collection2
 fourseven:scss
-reywood:bootstrap3-sass
 meteorhacks:fast-render
 reactive-var
+less
+nemo64:bootstrap
