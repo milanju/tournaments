@@ -120,26 +120,28 @@ Template.tournamentBracket.events({
       }
     }
     if(editing[playerA] && editing[playerB]) {
-      var scorePlayerA = parseInt($('#edit-score-' + playerA)[0].value);
-      var scorePlayerB = parseInt($('#edit-score-' + playerB)[0].value);
-      var leftovers = mode - scorePlayerA - scorePlayerB;
-      var scores = [];
-      for(var i = 0; i < scorePlayerA; i++) {
-        scores.push('win');
-      }
+      if($('#edit-score-' + playerA)[0] && $('#edit-score-' + playerB)[0]) {
+        var scorePlayerA = parseInt($('#edit-score-' + playerA)[0].value);
+        var scorePlayerB = parseInt($('#edit-score-' + playerB)[0].value);
+        var leftovers = mode - scorePlayerA - scorePlayerB;
+        var scores = [];
+        for(var i = 0; i < scorePlayerA; i++) {
+          scores.push('win');
+        }
 
-      for(var i = 0; i < scorePlayerB; i++) {
-        scores.push('lose');
-      }
+        for(var i = 0; i < scorePlayerB; i++) {
+          scores.push('lose');
+        }
 
-      for(var i = 0; i < leftovers; i++) {
-        scores.push('empty');
-      }
+        for(var i = 0; i < leftovers; i++) {
+          scores.push('empty');
+        }
 
-      if(scorePlayerA === ((mode+1)/2) || scorePlayerB === ((mode+1)/2)) {
-        Meteor.call('tournamentsSubmitScore', tournament._id, scores, this.userId);
-      } else {
-        // handle invalid scores
+        if(scorePlayerA === ((mode+1)/2) || scorePlayerB === ((mode+1)/2)) {
+          Meteor.call('tournamentsSubmitScore', tournament._id, scores, this.userId);
+        } else {
+          // handle invalid scores
+        }    
       }
 
       delete editing[playerA];

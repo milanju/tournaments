@@ -24,6 +24,9 @@
                     </div>
                     {{#if isInRole 'admin'}}
                       <span class="glyphicon glyphicon-pencil edit-match" aria-hidden="true"></span>
+                      {{#if beingEdited}}
+                        <span class="glyphicon glyphicon-menu-left player-set-back-a" aria-hidden="true"></span>
+                      {{/if}}
                     {{/if}}
                     <div class="bracket-line-top-right" style="{{rightTopLineAdjust}}"></div>
                     <div class="bracket-line-bottom-right" style="{{rightBottomLineAdjust}}"></div>
@@ -62,6 +65,11 @@
                         {{this.score}}
                       {{/if}}
                     </div>
+                    {{#if isInRole 'admin'}}
+                      {{#if beingEdited}}
+                        <span class="glyphicon glyphicon-menu-left player-set-back-b" aria-hidden="true"></span>
+                      {{/if}}
+                    {{/if}}
                   </div>
                 {{else}}
                   <div class="match-player match-player-2" style="margin-bottom: {{margin}}">
