@@ -15,3 +15,5 @@ meteorhacks:fast-render
 reactive-var
 less
 nemo64:bootstrap
+momentjs:moment
+tsega:bootstrap3-datetimepicker

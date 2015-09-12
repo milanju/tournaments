@@ -2,6 +2,12 @@ Template.tournamentNew.onCreated(function() {
   this.modes = new ReactiveVar([]);
 });
 
+Template.tournamentNew.onRendered(function() {
+    this.$('#new-tournament-date').datetimepicker({
+      format: 'LLL'
+    });
+});
+
 Template.tournamentNew.helpers({
   modes: function() {
     return Template.instance().modes.get();
@@ -16,7 +22,7 @@ Template.tournamentNew.events({
     var category = event.target['new-tournament-category'].value;
     var description = event.target['new-tournament-description'].value;
     var leagues = [event.target['new-tournament-leagues'].value];
-    var date = new Date();
+    var date = new Date(event.target['new-tournament-date'].value);
     var modeInputs = $('.new-tournament-mode-custom');
     var defaultMode = event.target['new-tournament-mode-default'].value;
     var modes = [];
