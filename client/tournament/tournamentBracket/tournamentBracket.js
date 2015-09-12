@@ -99,6 +99,16 @@ Template.tournamentBracket.helpers({
     var editing = Template.instance().editing.get();
     if(editing[this._id]) return true;
     return false;
+  },
+  notFirstRound: function() {
+    var bracket = Tournaments.findOne().bracket;
+    var i = bracket.length-1;
+    for(var j = 0; j < bracket[i].participants.length; j++) {
+      if(bracket[i].participants[j]._id === this._id) {
+        return false;
+      }
+    }
+    return true;
   }
 });
 
@@ -108,14 +118,27 @@ Template.tournamentBracket.events({
     var tournament = Template.currentData();
     var bracket = tournament.bracket;
     var playerA = this._id;
+    console.log(this);
     var playerB;
     var mode;
     for(var i = 0; i < bracket.length; i++) {
       for(var j = 0; j < bracket[i].participants.length; j++) {
         if(bracket[i].participants[j]._id === playerA) {
-          playerB = bracket[i].participants[j+1]._id;
-          mode = bracket[i].mode;
-          break;
+          if(bracket[i].ro !== 1) {
+            playerB = bracket[i].participants[j+1]._id;
+            mode = bracket[i].mode;
+            break;
+          } else {
+            if(editing[playerA]) {
+              console.log('delete editing');
+              delete editing[playerA];
+            } else {
+              console.log('set editing');
+              editing[playerA] = true;
+            }
+            template.editing.set(editing);
+            return;
+          }
         }
       }
     }
@@ -141,7 +164,7 @@ Template.tournamentBracket.events({
           Meteor.call('tournamentsSubmitScore', tournament._id, scores, this.userId);
         } else {
           // handle invalid scores
-        }    
+        }
       }
 
       delete editing[playerA];
@@ -152,5 +175,17 @@ Template.tournamentBracket.events({
     }
 
     template.editing.set(editing);
+  },
+  'click .player-set-back-b, click .player-set-back-a': function(event, template) {
+    var editing = template.editing.get();
+    console.log(editing);
+    Meteor.call('tournamentsSetPlayerBack', template.data._id, this, function(err, res) {
+      if(err) {
+        console.log('Error');
+      } else {
+        delete editing[this._id];
+        template.editing.set(editing);
+      }
+    });
   }
 });

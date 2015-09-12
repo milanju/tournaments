@@ -26,7 +26,9 @@
                     {{#if isInRole 'admin'}}
                       <span class="glyphicon glyphicon-pencil edit-match" aria-hidden="true"></span>
                       {{#if beingEdited}}
-                        <span class="glyphicon glyphicon-menu-left player-set-back-a" aria-hidden="true"></span>
+                        {{#if notFirstRound}}
+                          <span class="glyphicon glyphicon-menu-left player-set-back-a" aria-hidden="true"></span>
+                        {{/if}}
                       {{/if}}
                     {{/if}}
                     <div class="bracket-line-top-right" style="{{rightTopLineAdjust}}"></div>
@@ -68,7 +70,9 @@
                     </div>
                     {{#if isInRole 'admin'}}
                       {{#if beingEdited}}
-                        <span class="glyphicon glyphicon-menu-left player-set-back-b" aria-hidden="true"></span>
+                        {{#if notFirstRound}}
+                          <span class="glyphicon glyphicon-menu-left player-set-back-b" aria-hidden="true"></span>
+                        {{/if}}
                       {{/if}}
                     {{/if}}
                   </div>
