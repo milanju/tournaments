@@ -1,4 +1,7 @@
 Template.tournamentUsercp.helpers({
+  tournament: function() {
+    return Tournaments.findOne(this._id);
+  },
   isParticipant: function() {
     var user = Meteor.user();
     var participants = this.participants;
@@ -34,7 +37,6 @@ Template.tournamentUsercp.helpers({
           }
           if(opponent.userId !== "empty" && opponent.userId !== "BYE") {
             if(player.score === 0 && opponent.score === 0) {
-              console.log('has open match');
               return true;
             }
           }
@@ -75,7 +77,7 @@ Template.tournamentUsercp.helpers({
     return getMatch(this.bracket);
   },
   droppedOut: function() {
-    var bracket = Tournaments.findOne().bracket;
+    var bracket = this.bracket;
     var match = getMatch(bracket);
     if(match.opponent.userId === "empty" || match.opponent.userId === "BYE") {
       return false;

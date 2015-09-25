@@ -1,0 +1,14 @@
+<template name="adminTemplates">
+  <div class="container admin-container">
+    {{#if isInRole 'admin'}}
+    {{> adminNav}}
+    <div class="well">
+      <a href="/admin/templates/new" id="new-template-button" class="btn btn-primary">New Template</a>
+    </div>
+    {{else}}
+      <div class="well">
+        <p>Must be Admin</p>
+      </div>
+    {{/if}}
+  </div>
+</template>

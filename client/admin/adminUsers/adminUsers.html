@@ -1,0 +1,14 @@
+<template name="adminUsers">
+  <div class="container admin-container">
+    {{#if isInRole 'admin'}}
+    {{> adminNav}}
+    <div class="well">
+      <p>admin users</p>
+    </div>
+    {{else}}
+      <div class="well">
+        <p>Must be Admin</p>
+      </div>
+    {{/if}}
+  </div>
+</template>

@@ -2,33 +2,37 @@
   <div class="container home-container">
     <div class="row">
       <div class="col-xs-12">
-        <a href="/t/new" id="new-tournament-button" class="btn btn-primary">New Tournament</a>
-        <table class="table">
-          <tr>
-            <th>
-              Region
-            </th>
-            <th>
-              Tournament Name
-            </th>
-            <th>
-              Date
-            </th>
-          </tr>
-          {{#each tournaments}}
-            <tr>
-              <td>
-                {{this.region}}
-              </td>
-              <td>
-                <a href="/t/{{this._id}}">{{this.title}}</a>
-              </td>
-              <td>
-                {{formatDate this.date 'lll'}}
-              </td>
-            </tr>
-          {{/each}}
-        </table>
+        <div class="tournament-list">
+          <div class="well">
+            <a href="/t/new" id="new-tournament-button" class="btn btn-primary">New Tournament</a>
+            <table class="table">
+              <tr>
+                <th>
+                  Region
+                </th>
+                <th>
+                  Tournament Name
+                </th>
+                <th>
+                  Date
+                </th>
+              </tr>
+              {{#each tournaments}}
+                <tr>
+                  <td>
+                    {{this.region}}
+                  </td>
+                  <td>
+                    <a href="/t/{{this._id}}">{{this.title}}</a>
+                  </td>
+                  <td>
+                    {{formatDate this.date 'lll'}}
+                  </td>
+                </tr>
+              {{/each}}
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,13 +1,11 @@
-//@import '.meteor/local/build/programs/server/assets/packages/reywood_bootstrap3-sass/bootstrap';
-//@import '.meteor/local/build/programs/server/assets/packages/reywood_bootstrap3-sass/assets/stylesheets/bootstrap/theme';
-// Templates
-@import "./public/less/material.less";
-@import "./public/less/ripples.less";
-@import './tournament/tournamentUsercp/_tournamentUsercp.less';
-@import './tournament/tournamentUsercp/tournamentUsercpReport/_tournamentUsercpReport.less';
-@import './_mainLayout.less';
-@import './tournament/tournamentAdmincp/_tournamentAdmincp.less';
+//@import "./lib/custom.bootstrap.import.less";
+@import "./lib/custom.bootstrap.less";
+@import "./lib/custom.bootstrap.import.less";
+@import "./lib/custom.bootstrap.mixins.import.less";
+//@import "./public/less/material.less";
+//@import "./public/less/ripples.less";
 @import './tournament/tournamentBracket/_tournamentBracket.less';
+@import './tournament/tournamentAdmincp/tournamentAdmincp.import.less';
 
 @primary: #3F51B5;
 
@@ -22,4 +20,21 @@ body {
 
 .form-control {
   @primary: #FFF;
+}
+
+.tournament-container .tournament-well {
+  background-color: #181A1F;
+}
+
+.admincp-panel {
+  &:extend(.panel);
+  &:extend(.panel-primary);
+}
+
+.admincp-panel--heading {
+  &:extend(.panel-heading);
+}
+
+.admincp-panel--body {
+  &:extend(.panel-body);
 }

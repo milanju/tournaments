@@ -29,10 +29,13 @@
       </nav>
     </div>
     {{> yield}}
-    <div class="container">
+    <div class="container footer">
       <hr>
       <footer>
         <p>&copy; Milant</p>
+        {{#if isInRole 'admin'}}
+          <a href="/admin">Admin</a>
+        {{/if}}
       </footer>
     </div>
   </body>

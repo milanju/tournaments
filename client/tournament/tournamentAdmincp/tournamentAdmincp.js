@@ -27,5 +27,8 @@ Template.tournamentAdmincp.events({
   },
   'click #start-tournament-btn': function() {
     Meteor.call('tournamentsStart', this._id);
+  },
+  'click .admin-panel .panel-heading': function() {
+    $('.admin-panel .panel-body').slideToggle();
   }
 });
