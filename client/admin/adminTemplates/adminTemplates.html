@@ -4,6 +4,26 @@
     {{> adminNav}}
     <div class="well">
       <a href="/admin/templates/new" id="new-template-button" class="btn btn-primary">New Template</a>
+      <table class="table">
+        <tr>
+          <th>
+            Region
+          </th>
+          <th>
+            Template/Tournament Name
+          </th>
+        </tr>
+        {{#each templates}}
+          <tr>
+            <td>
+              {{this.region}}
+            </td>
+            <td>
+              <a href="/admin/templates/{{this._id}}/edit">{{this.title}}</a>
+            </td>
+          </tr>
+        {{/each}}
+      </table>
     </div>
     {{else}}
       <div class="well">

@@ -1,23 +1,20 @@
-<template name="tournamentNew">
+<template name="adminTemplatesEdit">
+  {{#with template}}
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <div class="panel-title">
-              {{#if isTemplate}}
-                New Template
-              {{else}}
-                New Tournament
-              {{/if}}
+              Edit Template
             </div>
           </div>
           <div class="panel-body">
-            <form id="new-tournament-form" class="form-horizontal">
+            <form id="edit-template-form" class="form-horizontal">
               <div class="form-group">
-                <label for="new-tournament-region" class="col-sm-2 control-label">Region</label>
+                <label for="edit-template-region" class="col-sm-2 control-label">Region</label>
                 <div class="col-sm-10">
-                  <select id="new-tournament-region" class="form-control">
+                  <select id="edit-template-region" class="form-control">
                     <option>EU</option>
                     <option>NA</option>
                     <option>KR</option>
@@ -25,62 +22,62 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="new-tournament-title" class="col-sm-2 control-label">Title</label>
+                <label for="edit-template-title" class="col-sm-2 control-label">Title</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="new-tournament-title" placeholder="Title">
+                  <input type="text" class="form-control" id="edit-template-title" placeholder="Title">
                 </div>
               </div>
               <div class="form-group">
-                <label for="new-tournament-category" class="col-sm-2 control-label">Category</label>
+                <label for="edit-template-category" class="col-sm-2 control-label">Category</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="new-tournament-category" placeholder="Category">
+                  <input type="text" class="form-control" id="edit-template-category" placeholder="Category">
                 </div>
               </div>
               <div class="form-group">
-                <label for="new-tournament-description" class="col-sm-2 control-label">Description</label>
+                <label for="edit-template-description" class="col-sm-2 control-label">Description</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="new-tournament-description" placeholder="Description">
+                  <input type="text" class="form-control" id="edit-template-description" placeholder="Description">
                 </div>
               </div>
               <div class="form-group">
-                <label for="new-tournament-leagues" class="col-sm-2 control-label">Leagues</label>
+                <label for="edit-template-leagues" class="col-sm-2 control-label">Leagues</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="new-tournament-leagues" placeholder="Leagues">
+                  <input type="text" class="form-control" id="edit-template-leagues" placeholder="Leagues">
                 </div>
               </div>
               <div class="form-group">
-                <label for="new-tournament-date" class="col-sm-2 control-label">Date</label>
+                <label for="edit-template-date" class="col-sm-2 control-label">Date</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="new-tournament-date" placeholder="Date">
+                  <input type="text" class="form-control" id="edit-template-date" placeholder="Date">
                 </div>
               </div>
               <div class="form-group">
-                <label for="new-tournament-mode-default" class="col-sm-2 control-label">Mode</label>
+                <label for="edit-template-mode-default" class="col-sm-2 control-label">Mode</label>
                 <div class="col-sm-10">
                   <div class="row">
                     <div class="col-xs-12 col-sm-4 col-lg-3">
-                      <label for="new-tournament-mode-default" class="control-label">Default</label>
-                      <input type="text" class="form-control" id="new-tournament-mode-default" placeholder="Best Of">
+                      <label for="edit-template-mode-default" class="control-label">Default</label>
+                      <input type="text" class="form-control" id="edit-template-mode-default" placeholder="Best Of">
                     </div>
                     {{#each modes}}
                       <div class="col-xs-12 col-sm-4 col-lg-3">
-                        <label for="new-tournament-mode-default" class="control-label">ro{{this}}</label>
-                        <input type="text" class="form-control new-tournament-mode-custom" placeholder="Best Of">
+                        <label for="edit-template-mode-default" class="control-label">ro{{this}}</label>
+                        <input type="text" class="form-control edit-template-mode-custom" placeholder="Best Of">
                       </div>
                     {{/each}}
                     <div class="col-xs-12 col-sm-4 col-lg-3">
                       <label class="control-label">Add/Remove Mode</label><br>
-                      <a class="btn btn-primary" id="new-tournament-mode-add">
+                      <a class="btn btn-primary" id="edit-template-mode-add">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                       </a>
-                      <a class="btn btn-danger" id="new-tournament-mode-remove">
+                      <a class="btn btn-danger" id="edit-template-mode-remove">
                         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <p class="new-tournament-form-error bg-danger col-sm-offset-2 col-sm-10"></p>
+              <p class="edit-template-form-error bg-danger col-sm-offset-2 col-sm-10"></p>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -92,4 +89,5 @@
       </div>
     </div>
   </div>
+  {{/with}}
 </template>

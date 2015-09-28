@@ -15,8 +15,12 @@ Template.tournamentNew.helpers({
 });
 
 Template.tournamentNew.events({
-  'submit #new-tournament-form': function(event) {
-    console.log('submitting');
+  'submit #new-tournament-form': function(event, template) {
+    if(template.data && template.data.isTemplate) {
+      var isTemplate = true;
+    } else {
+      var isTemplate = false;
+    }
     var region = event.target['new-tournament-region'].value.toLowerCase();
     var title = event.target['new-tournament-title'].value;
     var category = event.target['new-tournament-category'].value;
@@ -35,6 +39,7 @@ Template.tournamentNew.events({
     console.log(modes);
 
     Meteor.call('tournamentsCreate', {
+      isTemplate: isTemplate,
       region: region,
       title: title,
       category: category,
@@ -46,7 +51,11 @@ Template.tournamentNew.events({
       if(err) {
         $('.new-tournament-form-error').html(err.reason).show();
       } else {
-        Router.go('/t/' + res);
+        if(isTemplate) {
+          Router.go('/admin/templates');
+        } else {
+          Router.go('/t/' + res);
+        }
       }
     });
 

@@ -1,3 +1,7 @@
 <template name="adminTemplatesNew">
-  new template
+  {{#if isInRole 'admin'}}
+    {{> tournamentNew isTemplate=true}}
+  {{else}}
+    Must be Admin
+  {{/if}}
 </template>
