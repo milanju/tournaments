@@ -74,7 +74,7 @@ Template.tournamentBracket.helpers({
     }
 
     if(currentBracket.ro === 1) {
-      return 'border-left: 0;';
+      return 'border-left: 0; border-radius: 0;';
     }
   },
   rightBottomLineAdjust: function() {
