@@ -1,60 +1,54 @@
 <template name="tournamentUsercp">
   {{#with tournament}}
-    {{#if currentUser}}
-      {{#if isParticipant}}
-        <div class="well">
-          {{#if signupsOpen}}
-            <div class="usercp-toolbar">
-              {{#if checkin}}
-                <p>You are signed up as {{account}}. You need to check in now!</p>
-                <button id="tournament-usercp-checkin" class="btn btn-primary">Check In</button>
-              {{else}}
-                {{#if statusCheckin}}
-                  <p>You are checked in as {{account}}. Waiting for tournament to start.</p>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        {{#if currentUser}}
+          {{#if isParticipant}}
+            {{#if signupsOpen}}
+              <div class="usercp-toolbar">
+                {{#if checkin}}
+                  <p>You are signed up as {{account}}. You need to check in now!</p>
+                  <button id="tournament-usercp-checkin" class="btn btn-primary">Check In</button>
                 {{else}}
-                  <p>You are signed up as {{account}}.</p>
+                  {{#if statusCheckin}}
+                    <p>You are checked in as {{account}}. Waiting for tournament to start.</p>
+                  {{else}}
+                    <p>You are signed up as {{account}}.</p>
+                  {{/if}}
                 {{/if}}
+                <button id="tournament-usercp-signout" class="btn btn-primary">Sign me out :(!</button>
+              </div>
+            {{/if}}
+            {{#if running}}
+              {{#if isParticipating}}
+                {{#if hasOpenMatch}}
+                  {{> tournamentUsercpReport}}
+                {{else}}
+                  {{#if droppedOut}}
+                    You dropped out of the tournament.
+                  {{else}}
+                    Waiting for opponent.
+                  {{/if}}
+                {{/if}}
+              {{else}}
+                <p>You signed up but didn't check in. If there are still open slots try contacting an admin.</p>
               {{/if}}
-              <button id="tournament-usercp-signout" class="btn btn-primary">Sign me out :(!</button>
-            </div>
-          {{/if}}
-          {{#if running}}
-            {{#if isParticipating}}
-              {{#if hasOpenMatch}}
-                {{> tournamentUsercpReport}}
+            {{/if}}
+          {{else}}
+            {{#if signupsOpen}}
+              {{#if account}}
+                <p>You may sign up for this tournament as {{account}}.</p>
+                <button id="tournament-usercp-signup" class="btn btn-primary">Sign me up!</button>
               {{else}}
-                {{#if droppedOut}}
-                  You dropped out of the tournament.
-                {{else}}
-                  Waiting for opponent.
-                {{/if}}
               {{/if}}
             {{else}}
-              <p>You signed up but didn't check in. If there are still open slots try contacting an admin.</p>
+              Signups for this Tournament are closed.
             {{/if}}
           {{/if}}
-        </div>
-      {{else}}
-        {{#if signupsOpen}}
-          {{#if account}}
-            <div class="well text-center">
-              <p>You may sign up for this tournament as {{account}}.</p>
-              <div class="usercp-toolbar">
-                <button id="tournament-usercp-signup" class="btn btn-primary">Sign me up!</button>
-              </div>
-            </div>
-          {{else}}
-          {{/if}}
         {{else}}
-          <div class="well">
-            Signups for this Tournament are closed.
-          </div>
+          Login to participate in this tournament.
         {{/if}}
-      {{/if}}
-    {{else}}
-      <div class="well">
-        Login to participate in this tournament.
       </div>
-    {{/if}}
+    </div>
   {{/with}}
 </template>

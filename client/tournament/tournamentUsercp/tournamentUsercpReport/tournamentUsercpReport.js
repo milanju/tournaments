@@ -39,7 +39,7 @@ Template.tournamentUsercpReport.helpers({
   },
   loopCount: function(n) {
     var countArray = [];
-    for(var i = 0; i < n; i++) {
+    for(var i = 1; i <= n; i++) {
       countArray.push(i);
     }
     return countArray;
@@ -49,7 +49,7 @@ Template.tournamentUsercpReport.helpers({
     if(scores[this] === status) {
       return 'btn-primary';
     } else {
-      return 'btn-default';
+      return 'btn-flat';
     }
   }
 });

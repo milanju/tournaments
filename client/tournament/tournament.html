@@ -1,43 +1,38 @@
 <template name="tournament">
   {{#with tournament}}
-    <div class="container tournament-container">
-      <div class="well tournament-well">
-        <div class="row">
-            <div class="col-xs-12">
-              {{this.title}}
-                {{#if isInRole 'admin'}}
-                  {{> tournamentAdmincp}}
-                {{/if}}
-                <div class="row">
-                  <div class="col-xs-12 text-center">
-                    status: {{this.status}}
-                  </div>
-                  <div class="col-lg-4 col-md-6 col-xs-12">
-                    {{> tournamentUsercp}}
-                  </div>
-                  <div class="col-lg-8 col-md-6 col-xs-12">
-                    {{this.description}}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="panel panel-default participants">
-                      <div class="panel-heading">Participants</div>
-                      <div class="panel-body">
-                        {{#each this.participants}}
-                          {{this.account}}
-                        {{/each}}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              {{#each this.participants}}
-                <div>{{this.accounts}}</div>
-              {{/each}}
+    <div class="wrapper">
+      {{#if isInRole 'admin'}}
+        {{> tournamentAdmincp}}
+      {{/if}}
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <div class="alert alert-info">
+            status: {{this.status}}
           </div>
         </div>
-        {{> tournamentBracket}}
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          {{> tournamentUsercp}}
+        </div>
+        <div class="col-lg-8 col-md-6 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <h1 class="tournament-title">{{this.title}}</h1>
+              {{this.description}}
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="panel panel-default participants">
+            <div class="panel-heading">Participants</div>
+            <div class="panel-body">
+              {{#each this.participants}}
+                {{this.account}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    {{> tournamentBracket}}
   {{/with}}
 </template>

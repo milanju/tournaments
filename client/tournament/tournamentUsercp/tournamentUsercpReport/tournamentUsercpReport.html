@@ -1,16 +1,27 @@
 <template name="tournamentUsercpReport">
   {{#with match}}
-    <h4>{{this.player.account}} vs. {{this.opponent.account}}</h4>
-    <h5>Best of {{this.mode}}</h5>
-    <div id="submit-score-radios">
-      {{#each loopCount this.mode}}
-        <div>
-          <button id="submit-score-win-{{this}}" class="btn {{selected 'win'}} btn-sm" data="win">Win</button>
-          <button id="submit-score-lose-{{this}}" class="btn {{selected 'lose'}} btn-sm" data="lose">Lose</button>
-          <button id="submit-score-empty-{{this}}" class="btn {{selected 'empty'}} btn-sm" data="empty">-</button>
-        </div>
-      {{/each}}
+    <div class="text-center">
+      <h4 class="usercp-match-title">{{this.player.account}} vs. {{this.opponent.account}}</h4>
+      <h5 class="usercp-match-bestof">Best of {{this.mode}}</h5>
+      <table id="submit-score-radios" class="submit-score">
+        {{#each loopCount this.mode}}
+          <tr class="submit-score-row">
+            <td>
+              <span class="map-count">Map {{this}}</span>
+            </td>
+            <td>
+              <button id="submit-score-win-{{this}}" class="btn {{selected 'win'}} btn-sm" data="win">Win</button>
+            </td>
+            <td>
+              <button id="submit-score-lose-{{this}}" class="btn {{selected 'lose'}} btn-sm" data="lose">Lose</button>
+            </td>
+            <td>
+              <button id="submit-score-empty-{{this}}" class="btn {{selected 'empty'}} btn-sm" data="empty">-</button>
+            </td>
+          </tr>
+        {{/each}}
+      </table>
+      <button id="submit-score" class="btn btn-primary usercp-submit">Submit Score</button>
     </div>
-    <button id="submit-score" class="btn btn-primary">Submit Score</button>
   {{/with}}
 </template>

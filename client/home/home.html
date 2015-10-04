@@ -2,9 +2,11 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="tournament-list">
-          <a href="/t/new" id="new-tournament-button" class="btn btn-primary">New Tournament</a>
+          <p>
+            <a href="/t/new" id="new-tournament-button" class="btn btn-primary">New Tournament</a>
+          </p>
           <table class="table">
-            <tr>
+            <tr class="tournament-list-head">
               <th>
                 Region
               </th>
@@ -25,6 +27,18 @@
                 </td>
                 <td>
                   {{formatDate this.date 'lll'}}
+                </td>
+              </tr>
+              <tr id="tournament-list-info-{{this._id}}" class="tournament-list-info">
+                <td class="tournament-list-info-cell" colspan="2">
+                  <div class="info-{{this._id}} tournament-list-info-content">
+                    12 participants signed up
+                  </div>
+                </td>
+                <td class="tournament-list-info-cell">
+                  <div class="info-{{this._id}} tournament-list-info-content">
+                    start in 01:10:10:10
+                  </div>
                 </td>
               </tr>
             {{/each}}
