@@ -1,8 +1,7 @@
 <template name="adminTemplates">
-  <div class="admin-container">
-    {{#if isInRole 'admin'}}
+  {{#if isInRole 'admin'}}
     {{> adminNav}}
-    <div class="well">
+    <div class="wrapper">
       <a href="/admin/templates/new" id="new-template-button" class="btn btn-primary">New Template</a>
       <table class="table">
         <tr>
@@ -25,10 +24,9 @@
         {{/each}}
       </table>
     </div>
-    {{else}}
-      <div class="well">
-        <p>Must be Admin</p>
-      </div>
-    {{/if}}
-  </div>
+  {{else}}
+    <div class="wrapper">
+      <p>Must be Admin</p>
+    </div>
+  {{/if}}
 </template>

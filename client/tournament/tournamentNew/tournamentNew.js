@@ -52,9 +52,9 @@ Template.tournamentNew.events({
         $('.new-tournament-form-error').html(err.reason).show();
       } else {
         if(isTemplate) {
-          Router.go('/admin/templates');
+          FlowRouter.go('/admin/templates');
         } else {
-          Router.go('/t/' + res);
+          FlowRouter.go('/t/' + res);
         }
       }
     });

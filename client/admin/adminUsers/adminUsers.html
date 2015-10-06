@@ -2,11 +2,11 @@
   <div class="admin-container">
     {{#if isInRole 'admin'}}
     {{> adminNav}}
-    <div class="well">
+    <div class="wrapper">
       <p>admin users</p>
     </div>
     {{else}}
-      <div class="well">
+      <div class="wrapper">
         <p>Must be Admin</p>
       </div>
     {{/if}}

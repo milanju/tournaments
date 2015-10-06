@@ -1,7 +1,15 @@
+Template.userProfileEdit.onCreated(function() {
+  var self = this;
+  self.autorun(function() {
+    var username = FlowRouter.getParam('username');
+    self.subscribe('singleUser', username);
+  });
+})
+
 Template.userProfileEdit.helpers({
   isCurrentUser: function() {
     if(Meteor.user()) {
-      var routeUsername = Iron.controller().getParams().username;
+      var routeUsername = FlowRouter.getParam('username');
       var currentUsername = Meteor.user().username;
       if(routeUsername === currentUsername) {
         return true;
@@ -38,7 +46,7 @@ Template.userProfileEdit.events({
       Meteor.call('usersSetAccount', 'kr', krTag, krRace);
     }
 
-    Router.go('/users/' + username);
+    FlowRouter.go('/users/' + username);
     return false;
   }
 });
