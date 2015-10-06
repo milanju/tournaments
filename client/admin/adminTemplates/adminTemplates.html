@@ -1,4 +1,8 @@
 <template name="adminTemplates">
+  {{#if Template.subscriptionsReady}}
+  {{else}}
+    {{> loading}}
+  {{/if}}
   {{#if isInRole 'admin'}}
     {{> adminNav}}
     <div class="wrapper">

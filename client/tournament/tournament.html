@@ -1,7 +1,7 @@
 <template name="tournament">
   {{#if Template.subscriptionsReady}}
   {{else}}
-    {{logme}}
+    {{> loading}}
   {{/if}}
   {{#with tournament}}
     <div class="wrapper">
