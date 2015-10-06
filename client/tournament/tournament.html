@@ -1,4 +1,8 @@
 <template name="tournament">
+  {{#if Template.subscriptionsReady}}
+  {{else}}
+    {{logme}}
+  {{/if}}
   {{#with tournament}}
     <div class="wrapper">
       {{#if isInRole 'admin'}}
