@@ -1,4 +1,8 @@
 <template name="userProfile">
+  {{#if Template.subscriptionsReady}}
+  {{else}}
+    {{> loading}}
+  {{/if}}
   <div class="wrapper">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">

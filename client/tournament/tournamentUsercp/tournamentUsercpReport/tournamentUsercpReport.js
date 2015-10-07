@@ -27,6 +27,7 @@ Template.tournamentUsercpReport.onCreated(function() {
   this.scores = new ReactiveVar([]);
   var match = getMatch(this.data.bracket);
   for(var i = 0; i < match.mode; i++) {
+    console.log(i);
     var array = this.scores.get();
     array.push('empty');
     this.scores.set(array);
@@ -34,12 +35,15 @@ Template.tournamentUsercpReport.onCreated(function() {
 });
 
 Template.tournamentUsercpReport.helpers({
+  inc: function(i) {
+    return i+1;
+  },
   match: function() {
     return getMatch(this.bracket);
   },
   loopCount: function(n) {
     var countArray = [];
-    for(var i = 1; i <= n; i++) {
+    for(var i = 0; i < n; i++) {
       countArray.push(i);
     }
     return countArray;

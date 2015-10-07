@@ -1,4 +1,8 @@
 <template name="userProfileEdit">
+  {{#if Template.subscriptionsReady}}
+  {{else}}
+    {{> loading}}
+  {{/if}}
   {{#if isCurrentUser}}
     <div class="wrapper">
       <div class="row">
