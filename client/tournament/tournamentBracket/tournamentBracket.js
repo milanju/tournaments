@@ -13,6 +13,15 @@ Template.tournamentBracket.helpers({
     }
     return this.bracket.sort(compare);
   },
+  getScore: function(player, score) {
+    var res = 0;
+    for(var i = 0; i < score.length; i++) {
+      if(score[i] === player) {
+        res++;
+      }
+    }
+    return res;
+  },
   isEven: function() {
     if(Template.parentData().participants.indexOf(this) % 2 === 0) return true;
     return false;
@@ -95,11 +104,6 @@ Template.tournamentBracket.helpers({
   isFourth: function() {
     return Template.parentData().participants.indexOf(this) % 4 === 0
   },
-  beingEdited: function() {
-    var editing = Template.instance().editing.get();
-    if(editing[this._id]) return true;
-    return false;
-  },
   notFirstRound: function() {
     var bracket = Tournaments.findOne().bracket;
     var i = bracket.length-1;
@@ -114,78 +118,7 @@ Template.tournamentBracket.helpers({
 
 Template.tournamentBracket.events({
   'click .edit-match': function(event, template) {
-    var editing = template.editing.get();
-    var tournament = Template.currentData();
-    var bracket = tournament.bracket;
-    var playerA = this._id;
-    console.log(this);
-    var playerB;
-    var mode;
-    for(var i = 0; i < bracket.length; i++) {
-      for(var j = 0; j < bracket[i].participants.length; j++) {
-        if(bracket[i].participants[j]._id === playerA) {
-          if(bracket[i].ro !== 1) {
-            playerB = bracket[i].participants[j+1]._id;
-            mode = bracket[i].mode;
-            break;
-          } else {
-            if(editing[playerA]) {
-              console.log('delete editing');
-              delete editing[playerA];
-            } else {
-              console.log('set editing');
-              editing[playerA] = true;
-            }
-            template.editing.set(editing);
-            return;
-          }
-        }
-      }
-    }
-    if(editing[playerA] && editing[playerB]) {
-      if($('#edit-score-' + playerA)[0] && $('#edit-score-' + playerB)[0]) {
-        var scorePlayerA = parseInt($('#edit-score-' + playerA)[0].value);
-        var scorePlayerB = parseInt($('#edit-score-' + playerB)[0].value);
-        var leftovers = mode - scorePlayerA - scorePlayerB;
-        var scores = [];
-        for(var i = 0; i < scorePlayerA; i++) {
-          scores.push('win');
-        }
-
-        for(var i = 0; i < scorePlayerB; i++) {
-          scores.push('lose');
-        }
-
-        for(var i = 0; i < leftovers; i++) {
-          scores.push('empty');
-        }
-
-        if(scorePlayerA === ((mode+1)/2) || scorePlayerB === ((mode+1)/2)) {
-          Meteor.call('tournamentsSubmitScore', tournament._id, scores, this.userId);
-        } else {
-          // handle invalid scores
-        }
-      }
-
-      delete editing[playerA];
-      delete editing[playerB];
-    } else {
-      editing[playerA] = true;
-      editing[playerB] = true;
-    }
-
-    template.editing.set(editing);
-  },
-  'click .player-set-back-b, click .player-set-back-a': function(event, template) {
-    var editing = template.editing.get();
-    console.log(editing);
-    Meteor.call('tournamentsSetPlayerBack', template.data._id, this, function(err, res) {
-      if(err) {
-        console.log('Error');
-      } else {
-        delete editing[this._id];
-        template.editing.set(editing);
-      }
-    });
+    Session.set('edit-match', this._id);
+    $('#edit-match-modal').modal('show');
   }
 });

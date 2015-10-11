@@ -10,13 +10,13 @@
               <span class="map-count">Map {{inc this}}</span>
             </td>
             <td>
-              <button id="submit-score-win-{{this}}" class="btn {{selected 'win'}} btn-sm" data="win">Win</button>
+              <button id="submit-score-win-{{this}}" class="btn {{selected 'a'}} btn-sm btn-submit-score" data="a">Win</button>
             </td>
             <td>
-              <button id="submit-score-lose-{{this}}" class="btn {{selected 'lose'}} btn-sm" data="lose">Lose</button>
+              <button id="submit-score-lose-{{this}}" class="btn {{selected 'b'}} btn-sm btn-submit-score" data="b">Lose</button>
             </td>
             <td>
-              <button id="submit-score-empty-{{this}}" class="btn {{selected 'empty'}} btn-sm" data="empty">-</button>
+              <button id="submit-score-empty-{{this}}" class="btn {{selected 'empty'}} btn-sm btn-submit-score" data="empty">-</button>
             </td>
           </tr>
         {{/each}}

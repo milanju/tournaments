@@ -1,7 +1,4 @@
 getMatch = function(bracket) {
-  function isEven (n) {
-    return (n % 2) === 0;
-  }
   var user = Meteor.user();
   var foundPlayer = false;
   for(var i = 0; i < bracket.length; i++) {
@@ -24,22 +21,22 @@ getMatch = function(bracket) {
 }
 
 Template.tournamentUsercpReport.onCreated(function() {
-  this.scores = new ReactiveVar([]);
-  var match = getMatch(this.data.bracket);
-  for(var i = 0; i < match.mode; i++) {
-    console.log(i);
-    var array = this.scores.get();
-    array.push('empty');
-    this.scores.set(array);
+  var instance = this;
+  instance.tournament = function() {
+    return Tournaments.findOne(this.data.tournamentId);
   }
 });
 
 Template.tournamentUsercpReport.helpers({
+  tournament: function() {
+    return Template.instance().tournament();
+  },
   inc: function(i) {
     return i+1;
   },
   match: function() {
-    return getMatch(this.bracket);
+    var tournament = Template.instance().tournament();
+    return getMatch(tournament.bracket);
   },
   loopCount: function(n) {
     var countArray = [];
@@ -49,7 +46,9 @@ Template.tournamentUsercpReport.helpers({
     return countArray;
   },
   selected: function(status) {
-    var scores = Template.instance().scores.get();
+    var match = getMatch(Template.instance().tournament().bracket);
+    console.log(match);
+    var scores = match.player.score;
     if(scores[this] === status) {
       return 'btn-primary';
     } else {
@@ -62,13 +61,19 @@ Template.tournamentUsercpReport.events({
   'click #submit-score': function(event, template) {
     var scores = template.scores.get();
     var tournamentId = Template.currentData()._id;
-
     Meteor.call('tournamentsSubmitScore', tournamentId, scores);
   },
-  'click #submit-score-radios button': function(event, template) {
+  /*'click #submit-score-radios button': function(event, template) {
     var result = event.target.id.split('-')[2];
     var scores = template.scores.get();
     scores[this] = result;
     template.scores.set(scores);
+  },*/
+  'click .btn-submit-score': function(event, template) {
+    var tournament = Template.instance().tournament();
+    var match = getMatch(tournament.bracket);
+    var map = parseInt(this);
+    var result = event.target.getAttribute('data');
+    Meteor.call('tournamentsUpdateScore', tournament._id, match, map, result);
   }
 });

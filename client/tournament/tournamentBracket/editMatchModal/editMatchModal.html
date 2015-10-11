@@ -1,0 +1,36 @@
+<template name="editMatchModal">
+  <div class="modal fade" id="edit-match-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title text-center">{{match.firstPlayer.account}} vs. {{match.secondPlayer.account}}</h4>
+        </div>
+        <div class="modal-body text-center">
+          <table id="edit-score-radios" class="submit-score">
+            {{#each rounds match.mode}}
+              <tr class="submit-score-row">
+                <td>
+                  <span class="map-count">Map {{inc this}}</span>
+                </td>
+                <td>
+                  <button id="edit-score-win-{{this}}" class="btn {{selected 'win'}} btn-sm" data="win">Win</button>
+                </td>
+                <td>
+                  <button id="edit-score-lose-{{this}}" class="btn {{selected 'lose'}} btn-sm" data="lose">Lose</button>
+                </td>
+                <td>
+                  <button id="edit-score-empty-{{this}}" class="btn {{selected 'empty'}} btn-sm" data="empty">-</button>
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

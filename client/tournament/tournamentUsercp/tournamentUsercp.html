@@ -22,7 +22,7 @@
             {{#if running}}
               {{#if isParticipating}}
                 {{#if hasOpenMatch}}
-                  {{> tournamentUsercpReport}}
+                  {{> tournamentUsercpReport tournamentId=this._id}}
                 {{else}}
                   {{#if droppedOut}}
                     You dropped out of the tournament.

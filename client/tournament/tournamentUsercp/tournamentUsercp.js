@@ -1,6 +1,17 @@
+Template.tournamentUsercp.onCreated(function() {
+  var instance = this;
+
+  instance.tournament = function() {
+    return Tournaments.findOne(this.data.tournamentId);
+  }
+});
+
 Template.tournamentUsercp.helpers({
+  tester: function() {
+    console.log(Template.instance().tournament());
+  },
   tournament: function() {
-    return Tournaments.findOne(this._id);
+    return Template.instance().tournament();
   },
   isParticipant: function() {
     var user = Meteor.user();
@@ -32,13 +43,17 @@ Template.tournamentUsercp.helpers({
           var player = bracket[i].participants[j];
           if(isEven(j)) {
             var opponent = bracket[i].participants[j+1];
+            if(bracket[i-1].participants[j/2].userId !== 'empty') {
+              return false;
+            }
           } else {
             var opponent = bracket[i].participants[j-1];
-          }
-          if(opponent.userId !== "empty" && opponent.userId !== "BYE") {
-            if(player.score === 0 && opponent.score === 0) {
-              return true;
+            if(bracket[i-1].participants[(j-1)/2].userId !== 'empty') {
+              return false;
             }
+          }
+          if(opponent.userId !== 'empty' && opponent.userId !== 'BYE') {
+            return true;
           }
         }
       }
