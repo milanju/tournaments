@@ -1,2 +1,2 @@
 # Tournaments
-This is a esport tournament system built with Meteor
+An esport tournament system built on Meteor.
