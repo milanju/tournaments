@@ -6,9 +6,24 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="tournament-list">
-        <p>
-          <a href="/t/new" id="new-tournament-button" class="btn btn-primary">New Tournament</a>
-        </p>
+        <div class="demo-card">
+          <p>
+            Welcome to the demo of this Tournament Platform.
+            <br>
+            Please log in with: (<span class="demo-admin-login">USER: admin, PASSWORD: admin</span>).
+            <br>
+            You may add tournaments and populate them with dummy accounts and sign
+            up to tournaments yourself. Start the tournament to see the bracket generated.
+            Manipulate the bracket by clicking the pencil within the match you wish to adjust.
+            <br>
+            Database resets every hour.
+          </p>
+        </div>
+        {{#if isInRole 'admin'}}
+          <p>
+            <a href="/t/new" id="new-tournament-button" class="btn btn-primary">New Tournament</a>
+          </p>
+        {{/if}}
         <table class="table">
           <tr class="tournament-list-head">
             <th>
